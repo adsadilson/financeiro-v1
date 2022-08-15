@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+
+	<application>
+		<!-- Abrir um dialog externo -->
+		<action-listener>org.primefaces.application.DialogActionListener</action-listener>
+		<navigation-handler>org.primefaces.application.DialogNavigationHandler</navigation-handler>
+		<view-handler>org.primefaces.application.DialogViewHandler</view-handler>
+		<locale-config>
+			<default-locale>pt-BR</default-locale>
+		</locale-config>
+	</application>
+
+	<factory>
+		<exception-handler-factory>
+			br.com.apss.financeiro.util.jsf.JsfExceptionHandlerFactory</exception-handler-factory>
+	</factory>
+
+	<!-- Definição do PhaseListener da autenticação -->
+	<lifecycle>
+		<phase-listener>br.com.apss.financeiro.security.AutenticacaoListener</phase-listener>
+	</lifecycle>
+
+	<validator>
+		<validator-id>dtMovimentacaoValidation</validator-id>
+		<validator-class>br.com.apss.financeiro.validadors.DtMovimentacaoValidation</validator-class>
+	</validator>
+
+
+
+</faces-config>

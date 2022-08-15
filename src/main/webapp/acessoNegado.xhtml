@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="corpo">
+
+		<style>
+<!--
+.text-aqua {
+	color: #00c0ef !important;
+}
+
+a {
+	color: #3c8dbc;
+}
+
+.small {
+	font-weight: normal;
+	line-height: 1;
+	color: #777;
+	font-size: 65%;
+}
+
+h2, .h2 {
+	font-size: 30px;
+	font-family: inherit;
+	font-weight: 500;
+	line-height: 1.1;
+	color: inherit;
+	text-align: center;
+}
+-->
+</style>
+
+		<br />
+		<h:graphicImage library="images" name="seguranca.png"
+			style="margin-left: 150px" height="100px" />
+		<div style="margin-left: 150px; width: 550px;">
+			<h2>
+				Acesso negado verifique se o usuário possui permissão para acessar
+				esta funcionalidade. <br />
+			</h2>
+		</div>
+		<h:graphicImage library="images" name="password.png"
+			style="margin-left: 150px;margin-left:40%" height="100px" />
+
+
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/template/layoutCaixa.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="corpo">
+
+		<style>
+<!--
+.text-aqua {
+	color: #00c0ef !important;
+}
+
+a {
+	color: #3c8dbc;
+}
+
+.small {
+	font-weight: normal;
+	line-height: 1;
+	color: #777;
+	font-size: 65%;
+}
+
+h2, .h2 {
+	font-size: 30px;
+	font-family: inherit;
+	font-weight: 500;
+	line-height: 1.1;
+	color: inherit;
+	text-align: center;
+}
+
+#conteudo-1 {
+	float: left;
+	width: 200px;
+}
+
+#conteudo-2 {
+	float: left;
+	width: 800px;
+	display: inline;
+	margin-left: 80px;
+	margin-top: 50px;
+}
+
+.button {
+	width: 100%;
+	height: 60px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.column-even {
+	width: 70%;
+}
+
+.column-lab {
+	width: 100px;;
+}
+
+.column-vlr {
+	width: 155px;;
+}
+
+.l-top {
+	vertical-align: top;
+}
+
+.panelBotoes {
+	border: none !important;
+	margin-top: 3px !important;
+	margin-bottom: 3px !important;
+	background: #f4f0ec !important;
+}
+
+.panelHeight225 {
+	height: 225px !important;
+}
+
+.panelHeight313 {
+	height: 313px !important;
+}
+
+.panelEspacamento0px .ui-panel-content {
+	padding: 0 !important;
+}
+
+.panelEspacamento2px .ui-panel-content {
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+}
+
+.rotulo100 {
+	width: 85px !important;
+}
+
+.rotulo150 {
+	width: 150px !important;
+}
+
+.rotuloCart {
+	width: 100px !important;
+	text-align: right !important;
+	padding-right: 15px !important;
+}
+
+.rotuloCre {
+	width: 115px !important;
+	text-align: right !important;
+	padding-right: 15px !important;
+}
+
+.campo {
+	width: 250px;
+}
+
+.campo415 {
+	width: 445px !important;
+}
+
+.campo180 {
+	width: 180px !important;
+}
+
+.rotulo60 {
+	width: 85px !important;
+}
+-->
+</style>
+
+		<div id="conteudo-1">
+			<h:form id="frm-botoes" prependId="false">
+
+				<ui:remove>
+					<p:hotkey bind="F1" id="hotkey" process="@this"
+						action="/pages/pdv/lavanderia/pdvVendaLava?faces-redirect=true" />
+				</ui:remove>
+
+				<p:hotkey bind="F2" id="hotkey2" process="@this"
+					action="/pages/pdv/pdvRecebimento?faces-redirect=true" />
+
+				<p:hotkey bind="F3" id="hotkey3" process="@this"
+					action="/pages/pdv/pdvDespesa?faces-redirect=true" />
+
+				<h:panelGrid width="100%">
+
+					<p:commandButton value="Tela de Venda" styleClass="button"
+						icon="caixa32-icon"
+						rendered="#{parametroBean.par.ramoDeAtividade == 'COMERCIO_DE_GAS'}"
+						action="/pages/pdv/gas/pdvVendaGas?faces-redirect=true"
+						ajax="false">
+					</p:commandButton>
+
+					<p:commandButton value="Tela de Venda" styleClass="button"
+						icon="caixa32-icon"
+						rendered="#{parametroBean.par.ramoDeAtividade == 'LAVANDERIA'}"
+						action="/pages/pdv/lavanderia/pdvVendaLava?faces-redirect=true"
+						ajax="false">
+					</p:commandButton>
+					
+					<p:commandButton value="Tela de Venda" styleClass="button"
+						icon="caixa32-icon"
+						rendered="#{parametroBean.par.ramoDeAtividade == 'LOJA_DE_ROUPA'}"
+						action="/pages/pdv/loja/pdvVendaLoja?faces-redirect=true"
+						ajax="false">
+					</p:commandButton>
+
+
+					<p:commandButton icon="recebimento32-icon" value="Recebimento (F2)"
+						styleClass="button"
+						action="/pages/pdv/pdvRecebimento?faces-redirect=true" />
+					<p:commandButton icon="despesa32-icon" value="Despesa (F3)"
+						styleClass="button"
+						action="/pages/pdv/pdvDespesa?faces-redirect=true" />
+
+					<p:commandButton icon="outros32-icon" value="Outro(s)"
+						styleClass="button" title="Outros lançamentos"
+						action="/pages/pdv/pdvOutro?faces-redirect=true" />
+
+					<p:commandButton icon="fechar32-icon" value="Fechamento"
+						rendered="#{parametroBean.par.ramoDeAtividade != 'LAVANDERIA'}"
+						styleClass="button" title="Fechamento do caixa"
+						action="/pages/pdv/gas/pdvFechamentoGas?faces-redirect=true" />
+
+					<p:commandButton icon="fechar32-icon" value="Fechamento"
+						rendered="#{parametroBean.par.ramoDeAtividade == 'LAVANDERIA'}"
+						styleClass="button" title="Fechamento do caixa"
+						action="/pages/pdv/lavanderia/pdvFechamentoLava?faces-redirect=true" />
+
+					<ui:remove>
+						<p:commandButton icon="relatorio32-icon" value="Relatorios"
+							styleClass="button" />
+						<p:commandButton icon="consultar-venda-icon" value="Cliente(s)"
+							styleClass="button" />
+						<p:commandButton icon="fechar32-icon" value="Fechamento"
+							styleClass="button" title="Cadastrar">
+						</p:commandButton>
+					</ui:remove>
+				</h:panelGrid>
+				<h:panelGrid columns="2" style="margin-top: 35%; margin-left:10px;">
+					<h:outputText value="Nr Caixa:" />
+					<h:outputText value="#{vendaPDVBean.caixa.id}" />
+					<h:outputText value="Data:" />
+					<h:outputText value="#{vendaPDVBean.caixa.data}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+					<h:outputText value="Responsável:" />
+					<h:outputText value="#{vendaPDVBean.caixa.responsavel.nome}" />
+					<h:outputText value="Status:" />
+					<h:outputText value="#{vendaPDVBean.caixa.status}" />
+				</h:panelGrid>
+			</h:form>
+		</div>
+
+		<div id="conteudo-2">
+			<h1 style="font-weight: bold; font-size: 48px;">CAIXA LIVRE</h1>
+			<h:graphicImage library="images" name="venda1.png" height="250px" />
+			<h:graphicImage style="margin-left:15%" library="images"
+				name="venda3.jpg" height="200px" />
+		</div>
+
+		<div
+			style="bottom: 0; position: absolute; right: 0; text-align: right;">
+			<h1>Sistema licenciado para:</h1>
+			<h1>#{empresaBean.empresa.nome}</h1>
+			<h1>#{empresaBean.empresa.cpfCnpj}</h1>
+		</div>
+
+
+	</ui:define>
+
+</ui:composition>
