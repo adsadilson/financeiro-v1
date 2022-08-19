@@ -54,7 +54,7 @@ public class UsuarioService implements Serializable {
 		return dao.porEmail(email);
 	}
 	
-	public Usuario autenticacao(String email,String senha) {
+	public Usuario autenticacao(String email, String senha) {
 		return dao.autenticacao(email, senha);
 	}
 

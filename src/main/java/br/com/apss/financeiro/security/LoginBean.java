@@ -2,6 +2,7 @@ package br.com.apss.financeiro.security;
 
 import br.com.apss.financeiro.model.Usuario;
 import br.com.apss.financeiro.service.UsuarioService;
+import br.com.apss.financeiro.singleton.EmpresaSingleton;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.hibernate.jdbc.BatchedTooManyRowsAffectedException;
 import org.omnifaces.util.Faces;
@@ -41,6 +42,7 @@ public class LoginBean implements Serializable {
 
 		if (null != usuarioLogado.getUsuario()) {
 			System.out.println("Usuario encontado....");
+			new EmpresaSingleton().carregarEmpresas();
 			try {
 
 				FacesContext ctx = FacesContext.getCurrentInstance();

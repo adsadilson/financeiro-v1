@@ -1,13 +1,12 @@
 package br.com.apss.financeiro.security;
 
-import java.io.Serializable;
+import br.com.apss.financeiro.model.Usuario;
 
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
-
-import br.com.apss.financeiro.model.Usuario;
+import java.io.Serializable;
 
 @Named
 @SessionScoped

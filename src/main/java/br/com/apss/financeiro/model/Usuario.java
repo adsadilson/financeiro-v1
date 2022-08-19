@@ -46,6 +46,9 @@ public class Usuario implements Serializable {
 	@Transient
 	private String novaSenha;
 
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "usuario_grupo", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "grupo_id"))
+	private List<GrupoUsuario> grupos = new ArrayList<>();
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "cadastro")
@@ -84,6 +87,14 @@ public class Usuario implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha.toLowerCase();
+	}
+
+	public List<GrupoUsuario> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(List<GrupoUsuario> grupos) {
+		this.grupos = grupos;
 	}
 
 	public Date getCadastro() {

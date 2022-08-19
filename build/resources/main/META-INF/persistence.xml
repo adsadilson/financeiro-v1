@@ -6,16 +6,22 @@
 
 	<persistence-unit name="lav-reforco-local">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<class>br.com.apss.financeiro.model.Usuario</class>
+		<class>br.com.apss.financeiro.model.GrupoUsuario</class>
+		<class>br.com.apss.financeiro.model.ControleMenu</class>
+		<class>br.com.apss.financeiro.model.Permissao</class>
+		<class>br.com.apss.financeiro.model.Empresa</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.password" value="postgres" />
-			<property name="javax.persistence.jdbc.url"	value="jdbc:postgresql://localhost:5432/lav_reforco"></property>
+			<property name="javax.persistence.jdbc.url"	value="jdbc:postgresql://localhost:5432/financeiro"></property>
 			<property name="javax.persistence.jdbc.user" value="postgres" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="false" />
 			<property name="hibernate.enable_lazy_load_no_trans" value="true" />
 		</properties>
+
 	</persistence-unit>
 
 </persistence>
